@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>السيرة الذاتية</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    .btn-generate {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body style="background: #86A789;">
+  <div class="container">
+    <h1 class="text-center" style="color: #EBF3E8;">السيرة الذاتية</h1>
+    <form id="cvForm" dir="rtl">
+        <div class="form-group">
+          <label for="name" style="color: #EBF3E8;">الاسم:</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="age" style="color: #EBF3E8;">العمر:</label>
+          <input type="number" class="form-control" id="age" required>
+        </div>
+        <div class="form-group">
+          <label for="email" style="color: #EBF3E8;">البريد الإلكتروني:</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone" style="color: #EBF3E8;">رقم الهاتف:</label>
+          <input type="tel" class="form-control" id="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="address" style="color: #EBF3E8;">العنوان:</label>
+          <input type="text" class="form-control" id="address">
+        </div>
+        <div class="form-group">
+          <label for="education" style="color: #EBF3E8;">التعليم:</label>
+          <textarea class="form-control" id="education" rows="4"></textarea>
+        </div>
+        <center>
+            <div class="form-group">
+            <label for="agreementCheckbox" style="color: #EBF3E8;">
+              <input type="checkbox" id="agreementCheckbox" required style="color: #EBF3E8;">
+              أقر بأن المعلومات الواردة صحيحة
+            </label>
+          </div>
+        <button type="submit" class="btn btn-secondary btn-generate">إنشاء السيرة الذاتية</button>
+        </center>
+        
+      </form>
+<center>
+    <div id="cvOutput" class="mt-5" style="color: #EBF3E8;"></div>
+</center>
+    
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#cvForm').submit(function(e) {
+      e.preventDefault();
+      var name = $('#name').val();
+      var age = $('#age').val();
+      var email = $('#email').val();
+      var phone = $('#phone').val();
+      var address = $('#address').val();
+      var education = $('#education').val();
+
+      var cvContent = `
+        <h2>المعلومات الشخصية:</h2>
+        <p><strong>الاسم: </strong>${name}</p>
+        <p><strong>العمر: </strong>${age}</p>
+        <p><strong>البريد الإلكتروني: </strong>${email}</p>
+        <p><strong>رقم الهاتف: </strong>${phone}</p>
+        <p><strong>العنوان: </strong>${address}</p>
+
+        <h2>التعليم:</h2>
+        <p>${education}</p>
+
+        <!-- اضف المزيد من الأقسام الخاصة بالسيرة الذاتية هنا -->
+      `;
+
+      $('#cvOutput').html(cvContent);
+    });
+  });
+</script>
+</body>
+</html>
